@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Q4 2024 Performance Report</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', serif;
+      font-size: 13px;
+      color: #222;
+      background: #fff;
+      line-height: 1.7;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      padding: 20mm;
+      background: #fff;
+    }
+
+    /* Cover-style header */
+    .report-header {
+      background: linear-gradient(135deg, #1b2a4a 0%, #2d4a7a 100%);
+      color: #fff;
+      padding: 28px 30px;
+      border-radius: 8px;
+      margin-bottom: 28px;
+    }
+
+    .report-header .category {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #90b4e8;
+      margin-bottom: 8px;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    .report-header h1 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      letter-spacing: -0.3px;
+    }
+
+    .report-header .subtitle {
+      font-size: 13px;
+      color: #b8cfe8;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    .report-header .meta-row {
+      display: flex;
+      gap: 24px;
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 11px;
+      color: #90b4e8;
+    }
+
+    .report-header .meta-row span strong {
+      color: #fff;
+    }
+
+    /* KPI Cards */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .kpi-card {
+      background: #f8f9fa;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 14px;
+      text-align: center;
+    }
+
+    .kpi-card .kpi-value {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1b2a4a;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    .kpi-card .kpi-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #888;
+      margin-top: 4px;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    .kpi-card .kpi-delta {
+      font-size: 11px;
+      margin-top: 4px;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    .up { color: #2e7d32; }
+    .down { color: #c62828; }
+
+    /* Sections */
+    h2 {
+      font-size: 15px;
+      color: #1b2a4a;
+      border-left: 4px solid #2d4a7a;
+      padding-left: 10px;
+      margin-bottom: 12px;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    p {
+      margin-bottom: 12px;
+      color: #444;
+    }
+
+    section {
+      margin-bottom: 26px;
+    }
+
+    /* Progress bars */
+    .progress-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .progress-item label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #444;
+      margin-bottom: 4px;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    .progress-track {
+      background: #e8ecf0;
+      border-radius: 4px;
+      height: 10px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      border-radius: 4px;
+      background: linear-gradient(90deg, #2d4a7a, #4a90d9);
+    }
+
+    /* Table */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin-bottom: 20px;
+    }
+
+    .data-table thead th {
+      background: #1b2a4a;
+      color: #fff;
+      padding: 8px 10px;
+      text-align: left;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .data-table thead th:not(:first-child) {
+      text-align: right;
+    }
+
+    .data-table tbody td {
+      padding: 8px 10px;
+      font-size: 12px;
+      border-bottom: 1px solid #e8ecf0;
+      color: #444;
+    }
+
+    .data-table tbody td:not(:first-child) {
+      text-align: right;
+    }
+
+    .data-table tbody tr:nth-child(even) {
+      background: #f8f9fa;
+    }
+
+    /* Callout box */
+    .callout {
+      background: #e8f0fe;
+      border-left: 3px solid #2d4a7a;
+      padding: 12px 16px;
+      border-radius: 0 6px 6px 0;
+      font-size: 12px;
+      color: #333;
+      margin-bottom: 20px;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    .callout strong {
+      display: block;
+      font-size: 13px;
+      color: #1b2a4a;
+      margin-bottom: 4px;
+    }
+
+    /* Footer */
+    .page-footer {
+      border-top: 1px solid #e2e8f0;
+      padding-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      color: #aaa;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- Header -->
+    <div class="report-header">
+      <div class="category">Internal Report &mdash; Confidential</div>
+      <h1>Q4 2024 Performance Report</h1>
+      <div class="subtitle">Quarterly business review covering revenue, operations, and strategic outlook</div>
+      <div class="meta-row">
+        <span>Prepared by: <strong>Finance &amp; Strategy Team</strong></span>
+        <span>Period: <strong>Oct 1 &ndash; Dec 31, 2024</strong></span>
+        <span>Published: <strong>January 20, 2025</strong></span>
+      </div>
+    </div>
+
+    <!-- KPI Grid -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-value">$3.2M</div>
+        <div class="kpi-label">Total Revenue</div>
+        <div class="kpi-delta up">&#9650; 18% YoY</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">1,840</div>
+        <div class="kpi-label">New Customers</div>
+        <div class="kpi-delta up">&#9650; 12% QoQ</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">94.2%</div>
+        <div class="kpi-label">Retention Rate</div>
+        <div class="kpi-delta up">&#9650; 2.1 pts</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">$1,739</div>
+        <div class="kpi-label">Avg. Revenue / User</div>
+        <div class="kpi-delta down">&#9660; 3% QoQ</div>
+      </div>
+    </div>
+
+    <!-- Executive Summary -->
+    <section>
+      <h2>Executive Summary</h2>
+      <p>
+        Q4 2024 delivered strong results across all major business lines. Total revenue reached $3.2 million,
+        representing 18% year-over-year growth and surpassing the $3.0M target set at the start of the quarter.
+        Customer acquisition accelerated meaningfully, with 1,840 new accounts onboarded — the strongest Q4
+        in company history.
+      </p>
+      <p>
+        The Enterprise segment remained our highest-growth vector, driven by three strategic partnership renewals
+        and a series of upsells within the existing install base. Gross margin improved to 68%, up from 64% in Q3,
+        reflecting increased operational efficiency and the higher mix of software-only deals.
+      </p>
+    </section>
+
+    <!-- Regional Performance -->
+    <section>
+      <h2>Revenue by Region</h2>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Region</th>
+            <th>Revenue</th>
+            <th>Q3 Revenue</th>
+            <th>Growth</th>
+            <th>% of Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>North America</td>
+            <td>$1,540,000</td>
+            <td>$1,320,000</td>
+            <td class="up">+16.7%</td>
+            <td>48.1%</td>
+          </tr>
+          <tr>
+            <td>Europe</td>
+            <td>$980,000</td>
+            <td>$830,000</td>
+            <td class="up">+18.1%</td>
+            <td>30.6%</td>
+          </tr>
+          <tr>
+            <td>Asia-Pacific</td>
+            <td>$490,000</td>
+            <td>$390,000</td>
+            <td class="up">+25.6%</td>
+            <td>15.3%</td>
+          </tr>
+          <tr>
+            <td>Rest of World</td>
+            <td>$190,000</td>
+            <td>$175,000</td>
+            <td class="up">+8.6%</td>
+            <td>5.9%</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- OKR Progress -->
+    <section>
+      <h2>OKR Progress</h2>
+      <div class="progress-list">
+        <div class="progress-item">
+          <label><span>Revenue Growth (Target: $3.0M)</span><span>107%</span></label>
+          <div class="progress-track"><div class="progress-fill" style="width:100%;background:linear-gradient(90deg,#2e7d32,#43a047);"></div></div>
+        </div>
+        <div class="progress-item">
+          <label><span>Customer Acquisition (Target: 2,000)</span><span>92%</span></label>
+          <div class="progress-track"><div class="progress-fill" style="width:92%;"></div></div>
+        </div>
+        <div class="progress-item">
+          <label><span>NPS Score (Target: 65)</span><span>85%</span></label>
+          <div class="progress-track"><div class="progress-fill" style="width:85%;"></div></div>
+        </div>
+        <div class="progress-item">
+          <label><span>Churn Reduction (Target: &lt;6%)</span><span>78%</span></label>
+          <div class="progress-track"><div class="progress-fill" style="width:78%;"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Outlook -->
+    <div class="callout">
+      <strong>Q1 2025 Outlook</strong>
+      Based on current pipeline and contracted ARR, we project Q1 revenue in the range of $3.4M&ndash;$3.6M.
+      Key initiatives include the launch of the self-serve Enterprise tier and expansion into the DACH region.
+      Headcount is planned to grow by 12 positions, primarily in Engineering and Customer Success.
+    </div>
+
+    <!-- Footer -->
+    <div class="page-footer">
+      <span>Acme Corp &mdash; Internal &amp; Confidential</span>
+      <span>Q4 2024 Performance Report &mdash; Page 1</span>
+    </div>
+
+  </div>
+</body>
+</html>
