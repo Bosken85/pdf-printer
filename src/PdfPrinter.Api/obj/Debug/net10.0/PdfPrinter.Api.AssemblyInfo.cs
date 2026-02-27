@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PdfPrinter.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+534531052a6c02c91916645ad6e74c066365f4ad")]
 [assembly: System.Reflection.AssemblyProductAttribute("PdfPrinter.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PdfPrinter.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
